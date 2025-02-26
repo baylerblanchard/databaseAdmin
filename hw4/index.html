@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RPS Project</title>
+</head>
+<body>
+    <h1>Insert New Player</h1>
+    <form action="insert_player.php" method="post">
+        <label for="player_id">Player ID (16 characters max):</label><br>
+        <input type="text" id="player_id" name="player_id" maxlength="16"><br><br>
+        <input type="submit" value="Insert Player">
+    </form>
+    <br>
+    <h1>Insert New Game</h1>
+    <form action="insert_game.php" method="post">
+        <label for="player1_id">Player 1 ID (16 characters max):</label><br>
+        <input type="text" id="player1_id" name="player1_id" maxlength="16"><br><br>
+        <label for="player2_id">Player 2 ID (16 characters max):</label><br>
+        <input type="text" id="player2_id" name="player2_id" maxlength="16"><br><br>
+        <input type="submit" value="Insert Game">
+    </form>
+</body>
+</html>
