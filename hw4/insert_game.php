@@ -1,4 +1,4 @@
-<?php
+<?php  // Bayler Blanchard Assignment 4
 include 'connect.php';
 
 $player1_id = isset($_POST['player1_id']) ? $_POST['player1_id'] : '';
