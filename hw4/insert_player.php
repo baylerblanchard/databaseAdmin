@@ -1,6 +1,5 @@
-<?php
-include 'connect.php'; // Assuming connect.php is in the same directory and correctly configured
-
+<?php  // Bayler Blanchard Assignment 4
+include 'connect.php';
 $player_id = isset($_POST['player_id']) ? $_POST['player_id'] : '';
 
 ?>
@@ -17,15 +16,15 @@ $player_id = isset($_POST['player_id']) ? $_POST['player_id'] : '';
         echo "<p style='color:red;'>Please enter a Player ID.</p>";
     } else {
         $sql = "CALL proc_insert_player($1, $2)";
-        $params = array($player_id, null); // $2 is for INOUT parm_errlvl
+        $params = array($player_id, null);
 
         $result = pg_query_params($dbconn, $sql, $params);
 
         if ($result) {
             $row = pg_fetch_row($result);
-            $errlvl = $row[1]; // parm_errlvl is the second output parameter
+            $errlvl = $row[1]; 
 
-            if ($errlvl == 0) {
+            if ($errlvl == 0) { //added colors for error messages
                 echo "<p style='color:green;'>Player ID '" . htmlspecialchars($player_id) . "' inserted successfully.</p>";
             } elseif ($errlvl == 1) {
                 echo "<p style='color:red;'>Error: Player ID cannot be NULL or empty.</p>";
@@ -34,7 +33,7 @@ $player_id = isset($_POST['player_id']) ? $_POST['player_id'] : '';
             } else {
                 echo "<p style='color:red;'>Unknown error occurred. Error Level: " . htmlspecialchars($errlvl) . "</p>";
             }
-             pg_free_result($result); // Free result set
+             pg_free_result($result);
         } else {
             echo "<p style='color:red;'>Database query failed: " . pg_last_error($dbconn) . "</p>";
         }
@@ -43,6 +42,6 @@ $player_id = isset($_POST['player_id']) ? $_POST['player_id'] : '';
     pg_close($dbconn);
     ?>
     <br>
-    <a href="index_player.html">Insert Another Player</a> | <a href="index_game.html">Go to Insert Game Form</a>
+    <a href="index.html">Insert Another Player</a> | <a href="index.html">Go to Insert Game Form</a>
 </body>
 </html>
